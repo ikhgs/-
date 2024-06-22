@@ -4,7 +4,7 @@ module.exports = {
 		version: "1.0",
 		author: "Samir", // Time to wait before executing command again (seconds)
 		role: 0,
-		category: "text",
+		category: "fun",
 		guide: {
 			vi: "Not Available",
 			en: "botsays + (texr or letter)"
@@ -12,211 +12,211 @@ module.exports = {
 	},
 
 	onStart: async function ({ api, args, event }) {
-		 var text = args.join("").toLowerCase();
-			 text = text.toLowerCase();
-	text = text.replace(/\./g, `
+	   var text = args.join("").toLowerCase();
+       text = text.toLowerCase();
+  text = text.replace(/\./g, `
 ░░░
 ░░░
 ░░░
 ░░░
 ██╗
 ╚═╝`)
-	.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ|a/g, `
+  .replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ|a/g, `
 ░█████╗░
 ██╔══██╗
 ███████║
 ██╔══██║
 ██║░░██║
 ╚═╝░░╚═╝`)
-	.replace(/b/g, `
+  .replace(/b/g, `
 ██████╗░
 ██╔══██╗
 ██████╦╝
 ██╔══██╗
 ██████╦╝
 ╚═════╝░`)
-	.replace(/c/g, `
+  .replace(/c/g, `
 ░█████╗░
 ██╔══██╗
 ██║░░╚═╝
 ██║░░██╗
 ╚█████╔╝
 ░╚════╝░`)
-	.replace(/d|đ/g, `
+  .replace(/d|đ/g, `
 ██████╗░
 ██╔══██╗
 ██║░░██║
 ██║░░██║
 ██████╔╝
 ╚═════╝░`)
-	.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ|e/g, `
+  .replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ|e/g, `
 ███████╗
 ██╔════╝
 █████╗░░
 ██╔══╝░░
 ███████╗
 ╚══════╝`)
-	.replace(/f/g, `
+  .replace(/f/g, `
 ███████╗
 ██╔════╝
 █████╗░░
 ██╔══╝░░
 ██║░░░░░
 ╚═╝░░░░░`)
-	.replace(/g/g, `
+  .replace(/g/g, `
 ░██████╗░
 ██╔════╝░
 ██║░░██╗░
 ██║░░╚██╗
 ╚██████╔╝
 ░╚═════╝░`)
-	.replace(/h/g, `
+  .replace(/h/g, `
 ██╗░░██╗
 ██║░░██║
 ███████║
 ██╔══██║
 ██║░░██║
 ╚═╝░░╚═╝`)
-	.replace(/i/g, `
+  .replace(/i/g, `
 ██╗
 ██║
 ██║
 ██║
 ██║
 ╚═╝`)
-	.replace(/ì|í|ị|ỉ|ĩ|i/g, `
+  .replace(/ì|í|ị|ỉ|ĩ|i/g, `
 ░░░░░██╗
 ░░░░░██║
 ░░░░░██║
 ██╗░░██║
 ╚█████╔╝
 ░╚════╝░`)
-	.replace(/k/g, `
+  .replace(/k/g, `
 ██╗░░██╗
 ██║░██╔╝
 █████═╝░
 ██╔═██╗░
 ██║░╚██╗
 ╚═╝░░╚═╝`)
-	.replace(/l/g, `
+  .replace(/l/g, `
 ██╗░░░░░
 ██║░░░░░
 ██║░░░░░
 ██║░░░░░
 ███████╗
 ╚══════╝`)
-	.replace(/m/g, `
+  .replace(/m/g, `
 ███╗░░░███╗
 ████╗░████║
 ██╔████╔██║
 ██║╚██╔╝██║
 ██║░╚═╝░██║
 ╚═╝░░░░░╚═╝`)
-	.replace(/n/g, `
+  .replace(/n/g, `
 ███╗░░██╗
 ████╗░██║
 ██╔██╗██║
 ██║╚████║
 ██║░╚███║
 ╚═╝░░╚══╝`)
-	.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ|o/g, `
+  .replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ|o/g, `
 ░█████╗░
 ██╔══██╗
 ██║░░██║
 ██║░░██║
 ╚█████╔╝
 ░╚════╝░`)
-	.replace(/p/g, `
+  .replace(/p/g, `
 ██████╗░
 ██╔══██╗
 ██████╔╝
 ██╔═══╝░
 ██║░░░░░
 ╚═╝░░░░░`)
-	.replace(/q/g, `
+  .replace(/q/g, `
 ░██████╗░
 ██╔═══██╗
 ██║██╗██║
 ╚██████╔╝
 ░╚═██╔═╝░
 ░░░╚═╝░░░`)
-	.replace(/r/g, `
+  .replace(/r/g, `
 ██████╗░
 ██╔══██╗
 ██████╔╝
 ██╔══██╗
 ██║░░██║
 ╚═╝░░╚═╝`)
-	.replace(/s/g, `
+  .replace(/s/g, `
 ░██████╗
 ██╔════╝
 ╚█████╗░
 ░╚═══██╗
 ██████╔╝
 ╚═════╝░`)
-	.replace(/t/g, `
+  .replace(/t/g, `
 ████████╗
 ╚══██╔══╝
 ░░░██║░░░
 ░░░██║░░░
 ░░░██║░░░
 ░░░╚═╝░░░`)
-	.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ|u/g, `
+  .replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ|u/g, `
 ██╗░░░██╗
 ██║░░░██║
 ██║░░░██║
 ██║░░░██║
 ╚██████╔╝
 ░╚═════╝░`)
-	.replace(/v/g, `
+  .replace(/v/g, `
 ██╗░░░██╗
 ██║░░░██║
 ╚██╗░██╔╝
 ░╚████╔╝░
 ░░╚██╔╝░░
 ░░░╚═╝░░░`)
-	.replace(/x/g, `
+  .replace(/x/g, `
 ██╗░░██╗
 ╚██╗██╔╝
 ░╚███╔╝░
 ░██╔██╗░
 ██╔╝╚██╗
 ╚═╝░░╚═╝` )
-	.replace(/ỳ|ý|ỵ|ỷ|ỹ|y/g, `
+  .replace(/ỳ|ý|ỵ|ỷ|ỹ|y/g, `
 ██╗░░░██╗
 ╚██╗░██╔╝
 ░╚████╔╝░
 ░░╚██╔╝░░
 ░░░██║░░░
 ░░░╚═╝░░░`)
-	.replace(/w/g, `
+  .replace(/w/g, `
 ░██╗░░░░░░░██╗
 ░██║░░██╗░░██║
 ░╚██╗████╗██╔╝
 ░░████╔═████║░
 ░░╚██╔╝░╚██╔╝░
 ░░░╚═╝░░░╚═╝░░`)
-	.replace(/z/g, `
+  .replace(/z/g, `
 ███████╗
 ╚════██║
 ░░███╔═╝
 ██╔══╝░░
 ███████╗
 ╚══════╝`)
-	.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, "");
-	var arr = text.replace("\n", "").split("\n").filter(item => item.length != 0);
-	var num = (arr.length/6)-1;
-	var main = arr.slice(0,6);
-	var extra = arr.splice(6);
-	var msg = "";
-	var mainlength = main.length;
-	for(let i = 0; i < mainlength; i++) {
-		var txt = main[i];
-		for(let o = 0; o < num; o++) {
-			txt += extra[i+(o*6)];
-		}
-		msg += txt+"\n";
-	}
-	return api.sendMessage(msg+"\nSee the message on the browser to see more clearly", event.threadID, event.messageID);
+  .replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, "");
+  var arr = text.replace("\n", "").split("\n").filter(item => item.length != 0);
+  var num = (arr.length/6)-1;
+  var main = arr.slice(0,6);
+  var extra = arr.splice(6);
+  var msg = "";
+  var mainlength = main.length;
+  for(let i = 0; i < mainlength; i++) {
+    var txt = main[i];
+    for(let o = 0; o < num; o++) {
+      txt += extra[i+(o*6)];
+    }
+    msg += txt+"\n";
+  }
+  return api.sendMessage(msg+"\nSee the message on the browser to see more clearly", event.threadID, event.messageID);
 }
 };
