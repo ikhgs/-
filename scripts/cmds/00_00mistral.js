@@ -19,7 +19,7 @@ module.exports = {
 			}
 
 			const prompt = encodeURIComponent(args.join(" "));
-			const apiUrl = `https://code-merge-api-hazeyy01.replit.app/api/mistral/response?prompt=${prompt}`;
+			const apiUrl = `https://hashier-api-groq.vercel.app/api/groq/mistral?ask=${prompt}`;
 
 			const response = await axios.get(apiUrl);
 
