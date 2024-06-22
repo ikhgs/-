@@ -3,8 +3,8 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "[ 🐐 | Goat Bot V2 ]";
-/**
+const doNotDelete = "💕❤️Bruno❤️💕";
+/** 
 * @author NTKhang
 * @author: do not delete it
 * @message if you delete or edit it you will get a global ban
@@ -12,16 +12,20 @@ const doNotDelete = "[ 🐐 | Goat Bot V2 ]";
 
 module.exports = {
 	config: {
-		name: "help7",
-		version: "1.21",
+		name: "help",
+		version: "1.18",
 		author: "NTKhang",
 		countDown: 5,
 		role: 0,
-		description: {
+		shortDescription: {
+			vi: "Xem cách dùng lệnh",
+			en: "View command usage"
+		},
+		longDescription: {
 			vi: "Xem cách sử dụng của các lệnh",
 			en: "View command usage"
 		},
-		category: "info",
+		category: "box chat",
 		guide: {
 			vi: "   {pn} [để trống | <số trang> | <tên lệnh>]"
 				+ "\n   {pn} <command name> [-u | usage | -g | guide]: chỉ hiển thị phần hướng dẫn sử dụng lệnh"
@@ -162,7 +166,7 @@ module.exports = {
 		}
 	},
 
-	onStart: async function ({ message, args, event, threadsData, getLang, role, globalData }) {
+	onStart: async function ({ message, args, event, threadsData, getLang, role }) {
 		const langCode = await threadsData.get(event.threadID, "data.lang") || global.GoatBot.config.language;
 		let customLang = {};
 		const pathCustomLang = path.normalize(`${process.cwd()}/languages/cmds/${langCode}.js`);
@@ -176,32 +180,7 @@ module.exports = {
 		if (!["category", "name"].includes(sortHelp))
 			sortHelp = "name";
 		const commandName = (args[0] || "").toLowerCase();
-		let command = commands.get(commandName) || commands.get(aliases.get(commandName));
-		const aliasesData = threadData.data.aliases || {
-			// uid: ["userid", "id"]
-		};
-		if (!command) {
-			for (const cmdName in aliasesData) {
-				if (aliasesData[cmdName].includes(commandName)) {
-					command = commands.get(cmdName);
-					break;
-				}
-			}
-		}
-
-		if (!command) {
-			const globalAliasesData = await globalData.get('setalias', 'data', []);
-			// [{
-			// 	commandName: "uid",
-			// 	aliases: ["uid", "id]
-			// }]
-			for (const item of globalAliasesData) {
-				if (item.aliases.includes(commandName)) {
-					command = commands.get(item.commandName);
-					break;
-				}
-			}
-		}
+		const command = commands.get(commandName) || commands.get(aliases.get(commandName));
 
 		// ———————————————— LIST ALL COMMAND ——————————————— //
 		if (!command && !args[0] || !isNaN(args[0])) {
@@ -214,14 +193,14 @@ module.exports = {
 					if (value.config.role > 1 && role < value.config.role)
 						continue;
 					let describe = name;
-					let description;
-					const descriptionCustomLang = customLang[name]?.description;
-					if (descriptionCustomLang != undefined)
-						description = checkLangObject(descriptionCustomLang, langCode);
-					else if (value.config.description)
-						description = checkLangObject(value.config.description, langCode);
-					if (description)
-						describe += `: ${cropContent(description.charAt(0).toUpperCase() + description.slice(1), 50)}`;
+					let shortDescription;
+					const shortDescriptionCustomLang = customLang[name]?.shortDescription;
+					if (shortDescriptionCustomLang != undefined)
+						shortDescription = checkLangObject(shortDescriptionCustomLang, langCode);
+					else if (value.config.shortDescription)
+						shortDescription = checkLangObject(value.config.shortDescription, langCode);
+					if (shortDescription)
+						describe += `: ${cropContent(shortDescription.charAt(0).toUpperCase() + shortDescription.slice(1))}`;
 					arrayInfo.push({
 						data: describe,
 						priority: value.priority || 0
@@ -302,8 +281,8 @@ module.exports = {
 					getLang("roleText2");
 
 			const author = configCommand.author;
-			const descriptionCustomLang = customLang[configCommand.name]?.description;
-			let description = checkLangObject(configCommand.description, langCode);
+			const descriptionCustomLang = customLang[configCommand.name]?.longDescription;
+			let description = checkLangObject(configCommand.longDescription, langCode);
 			if (description == undefined)
 				if (descriptionCustomLang != undefined)
 					description = checkLangObject(descriptionCustomLang, langCode);
@@ -321,30 +300,9 @@ module.exports = {
 			else if (args[1]?.match(/^-r|role$/))
 				formSendMessage.body = getLang("onlyRole", roleText);
 			else if (args[1]?.match(/^-i|info$/))
-				formSendMessage.body = getLang(
-					"onlyInfo",
-					configCommand.name,
-					description,
-					aliasesString,
-					aliasesThisGroup,
-					configCommand.version,
-					roleText,
-					configCommand.countDown || 1,
-					author || ""
-				);
+				formSendMessage.body = getLang("onlyInfo", configCommand.name, description, aliasesString, aliasesThisGroup, configCommand.version, roleText, configCommand.countDown || 1, author || "");
 			else {
-				formSendMessage.body = getLang(
-					"getInfoCommand",
-					configCommand.name,
-					description,
-					aliasesString,
-					aliasesThisGroup,
-					configCommand.version,
-					roleText,
-					configCommand.countDown || 1,
-					author || "",
-					guideBody.split("\n").join("\n│")
-				);
+				formSendMessage.body = getLang("getInfoCommand", configCommand.name, description, aliasesString, aliasesThisGroup, configCommand.version, roleText, configCommand.countDown || 1, author || "", `${guideBody.split("\n").join("\n│")}`);
 				sendWithAttachment = true;
 			}
 
