@@ -5,10 +5,9 @@ const PREFIXES = ["ai", "-claire"];
 async function askClaire(api, event, message) {
     try {
         const prompt = encodeURIComponent(event.body.split(" ").slice(1).join(" "));
-        const apiUrl = new URL('https://liaspark.chatbotcommunity.ltd/@hercai/api/gemini/');
-        apiUrl.searchParams.append('query', prompt);
+        const apiUrl = `https://liaspark.chatbotcommunity.ltd/@LianeAPI_Reworks/api/axis?ask=${prompt}`;
 
-        const response = await axios.get(apiUrl.toString());
+        const response = await axios.get(apiUrl);
 
         if (response.data && response.data.message) {
             const messageText = response.data.message;
