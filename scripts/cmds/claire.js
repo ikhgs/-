@@ -5,7 +5,7 @@ const PREFIXES = ["ai", "-claire"];
 async function askClaire(api, event, message) {
     try {
         const prompt = encodeURIComponent(event.body.split(" ").slice(1).join(" "));
-        const apiUrl = `https://liaspark.chatbotcommunity.ltd/@LianeAPI_Reworks/api/axis?ask=${prompt}`;
+        const apiUrl = `https://liaspark.chatbotcommunity.ltd/@unregistered/api/gpt-4/?query=${prompt}`;
 
         const response = await axios.get(apiUrl);
 
