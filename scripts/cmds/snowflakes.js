@@ -56,7 +56,7 @@ module.exports = {
 			const response = await axios.get(`https://ai-1stclass-nemory-project.vercel.app/api/arctic?ask=${encodeURIComponent(user)}`);
 			const responseData = response.data;
 			const content = formatFont(responseData.response);
-			const bayot = `❄️ 𝗦𝗡𝗢𝗪𝗙𝗟𝗔𝗞𝗘𝗦 (𝐀𝐈)\n\n🖋️ Ans: '${content}'\n\n👤 Question Asked by: ${userNames.join(', ')}`;
+			const bayot = `❤️🇧 🇷 🇺 🇳 🇴 ❤️ (𝐀𝐈)\n\n👉 Ans: '${content}'\n\n👤 Question Asked by: ${userNames.join(', ')}`;
 			await api.sendMessage(bayot, event.threadID);
 
 		} catch (err) {
