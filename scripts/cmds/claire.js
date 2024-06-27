@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const PREFIXES = ["ai", "-claire"];
+const PREFIXES = ["ai", "-claire", "bruno", "aina", "GE", "espa", "bepc", "bacc"];
 
 async function askClaire(api, event, message) {
     try {
