@@ -23,9 +23,9 @@ async function handleCommand(api, event, args, message) {
 async function getAnswerFromAI(question) {
     try {
         const services = [
-            { url: 'https://liaspark.chatbotcommunity.ltd/@unregistered/api/ai5', params: { prompt: question, uid: 'your-uid-here' } },
-            { url: 'https://liaspark.chatbotcommunity.ltd/@unregistered/api/ai5', params: { query: question } },
-            { url: 'https://liaspark.chatbotcommunity.ltd/@unregistered/api/ai5', params: { ask: question } }
+            { url: 'https://hashier-api-groq.vercel.app/api/groq/mistral', params: { prompt: question, uid: 'your-uid-here' } },
+            { url: 'https://hashier-api-groq.vercel.app/api/groq/mistral', params: { query: question } },
+            { url: 'https://hashier-api-groq.vercel.app/api/groq/mistral', params: { ask: question } }
         ];
 
         for (const service of services) {
