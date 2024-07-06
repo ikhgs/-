@@ -19,7 +19,7 @@ module.exports = {
       }
 
       const prompt = encodeURIComponent(args.join(" "));
-      const apiUrl = `https://hashier-api-groq.vercel.app/api/groq/mistral?ask=${prompt}`;
+      const apiUrl = `https://ai-chat-gpt-4-lite.onrender.com/api/hercai?question=${prompt}`;
 
       const response = await axios.get(apiUrl);
 
