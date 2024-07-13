@@ -1,36 +1,96 @@
-const axios = require('axios');
+const axios = require("axios");
 
 module.exports = {
   config: {
     name: "mistral",
-    author: "cliff", //api by hazey
-    version: "1.0.0",
+    version: "1.0",
+    author: "Rishad",
     countDown: 5,
     role: 0,
-    category: "Ai",
     shortDescription: {
-      en: "{p}mistral"
+      vi: "chat with PI AI",
+      en: "chat with PI AI"
+    },
+    longDescription: {
+      vi: "chat with PI AI",
+      en: "chat with PI AI"
+    },
+    category: "AI",
+    guide: {
+      en: "{pn} 'prompt'\nexample:\n{pn} hi there \nyou can reply to chat\nuse clear to delete conversations"
     }
   },
-  onStart: async function ({ api, event, args }) {
+  onStart: async function ({ message, event, args, commandName }) {
+    const prompt = args.join(" ");
+    if (!prompt) {
+      message.reply(`Please provide some text`);
+      return;
+    }
+
     try {
-      if (!args[0]) {
-        return api.sendMessage("Please provide a prompt for Mistral.", event.threadID);
-      }
+      const uid = event.senderID;
+      const response = await axios.get(
+        `https://joshweb.click/api/mixtral-8b?q=${encodeURIComponent(prompt)}&uid=${uid}&apikey=api1`
+      );
 
-      const prompt = encodeURIComponent(args.join(" "));
-      const apiUrl = `https://joshweb.click/api/mixtral-8b?q=${prompt}`;
-
-      const response = await axios.get(apiUrl);
-
-      if (response.data && response.data.response) {
-        api.sendMessage(response.data.response, event.threadID);
+      if (response.data && response.data.result) {
+        message.reply(
+          {
+            body: response.data.result
+          },
+          (err, info) => {
+            global.GoatBot.onReply.set(info.messageID, {
+              commandName,
+              messageID: info.messageID,
+              author: event.senderID
+            });
+          }
+        );
       } else {
-        api.sendMessage("Unable to get a response from Mistral.", event.threadID);
+        console.error("API Error:", response.data);
+        sendErrorMessage(message, "Server not responding ❌");
       }
     } catch (error) {
-      console.error('Error making Mistral API request:', error.message);
-      api.sendMessage("An error occurred while processing your request.", event.threadID);
+      console.error("Request Error:", error.message);
+      sendErrorMessage(message, "Server not responding ❌");
+    }
+  },
+  onReply: async function ({ message, event, Reply, args }) {
+    let { author, commandName } = Reply;
+    if (event.senderID !== author) return;
+    const prompt = args.join(" ");
+
+    try {
+      const uid = event.senderID;
+      const response = await axios.get(
+        `https://joshweb.click/api/mixtral-8b?q=${encodeURIComponent(prompt)}&uid=${uid}&apikey=api1`
+      );
+
+      if (response.data && response.data.result) {
+        message.reply(
+          {
+            body: response.data.result
+          },
+          (err, info) => {
+            global.GoatBot.onReply.set(info.messageID, {
+              commandName,
+              messageID: info.messageID,
+              author: event.senderID
+            });
+          }
+        );
+      } else {
+        console.error("API Error:", response.data);
+        sendErrorMessage(message, "Server not responding ❌");
+      }
+    } catch (error) {
+      console.error("Request Error:", error.message);
+      sendErrorMessage(message, "Server not responding ❌");
     }
   }
 };
+
+function sendErrorMessage(message, errorMessage) {
+  message.reply({ body: errorMessage });
+        }
+                             
