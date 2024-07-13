@@ -25,7 +25,7 @@ function formatFont(text) {
 
 module.exports = {
 	config: {
-		name: "meta3",
+		name: "meta",
 		version: "4.7",
 		hasPermission: 0,
 		role: 0,
@@ -63,7 +63,7 @@ module.exports = {
 			try {
 				api.sendMessage({ body: "🗨️ | 𝙼𝚎𝚝𝚊 𝙰𝙸 𝚒𝚜 𝚜𝚎𝚊𝚛𝚌𝚑𝚒𝚗𝚐 𝚏𝚘𝚛 𝚊𝚗𝚜𝚠𝚎𝚛, 𝙿𝚕𝚎𝚊𝚜𝚎 𝚠𝚊𝚒𝚝..." }, event.threadID, event.messageID);
 
-				const response = await axios.get(`https://ai-1stclass-nemory-project.vercel.app/api/llama?ask=${encodeURIComponent(content)}`);
+				const response = await axios.get(`https://joshweb.click/api/llama-3-70b?q=${encodeURIComponent(content)}`);
 
 				if (response.data && response.data.response) {
 					const formattedContent = formatFont(response.data.response);
@@ -82,3 +82,4 @@ module.exports = {
 
 const wrapper = new GoatWrapper(module.exports);
 wrapper.applyNoPrefix({ allowPrefix: true });
+			
