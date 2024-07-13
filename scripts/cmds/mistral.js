@@ -3,7 +3,7 @@ const axios = require('axios');
 module.exports = {
   config: {
     name: "mistral",
-    author: "cliff",//api by hazey
+    author: "cliff", //api by hazey
     version: "1.0.0",
     countDown: 5,
     role: 0,
@@ -19,7 +19,7 @@ module.exports = {
       }
 
       const prompt = encodeURIComponent(args.join(" "));
-      const apiUrl = `https://ai-chat-gpt-4-lite.onrender.com/api/hercai?question=${prompt}`;
+      const apiUrl = `https://joshweb.click/api/mixtral-8b?q=${prompt}`;
 
       const response = await axios.get(apiUrl);
 
