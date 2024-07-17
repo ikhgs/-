@@ -17,7 +17,7 @@ module.exports = {
 
 		onStart: async function ({ api, event, args }) {
 				const content = encodeURIComponent(args.join(" "));
-				const apiUrl = `https://aiapiviafastapiwithimagebyjonellmagallanes.replit.app/ai?content=${content}`;
+				const apiUrl = `https://nethwieapi.onrender.com/ai?model=wiegine&user=${content}`;
 
 				if (!content) return api.sendMessage("Please provide your question.\n\nExample: ai what is the solar system?", event.threadID, event.messageID);
 
