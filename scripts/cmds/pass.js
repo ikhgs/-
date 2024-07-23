@@ -13,7 +13,7 @@ async function handleCommand(api, event, args, message) {
         const { response, messageID } = await getAIResponse(question, event.senderID, event.messageID);
         lastResponseMessageID = messageID;
 
-        api.sendMessage(`[ 𝗔𝗦𝗦𝗜𝗦𝗧𝗔𝗡𝗧 𝗖𝗢𝗡𝗧𝗜𝗡𝗨𝗘𝗦 𝗔𝗜 ]\n━━━━━━━━━━━━━━━━━━\n${response}\n━━━━━━━━━━━━━━━━━━`, event.threadID, messageID);
+        api.sendMessage(`[ 🍟𝔾𝕖𝕞𝕚𝕟𝕚🍟 ]\n━━━━━━━━━━━━━━━━━━\n${response}\n━━━━━━━━━━━━━━━━━━`, event.threadID, messageID);
     } catch (error) {
         console.error("Error in handleCommand:", error.message);
         message.reply("An error occurred while processing your request.");
@@ -80,7 +80,7 @@ module.exports = {
         try {
             const { response, messageID } = await getAIResponse(input, event.senderID, event.messageID);
             lastResponseMessageID = messageID;
-            api.sendMessage(`[ 𝗔𝗦𝗦𝗜𝗦𝗧𝗔𝗡𝗧 𝗖𝗢𝗡𝗧𝗜𝗡𝗨𝗘𝗦 𝗔𝗜 ]\n━━━━━━━━━━━━━━━━\n${response}\n━━━━━━━━━━━━━━━━━━`, event.threadID, messageID);
+            api.sendMessage(`[ 🍟𝔾𝕖𝕞𝕚𝕟𝕚🍟 ]\n━━━━━━━━━━━━━━━━\n${response}\n━━━━━━━━━━━━━━━━━━`, event.threadID, messageID);
         } catch (error) {
             console.error("Error in onStart:", error.message);
             api.sendMessage("An error occurred while processing your request.", event.threadID);
@@ -95,7 +95,7 @@ module.exports = {
             try {
                 const { response, messageID } = await getAIResponse(input, event.senderID, event.messageID);
                 lastResponseMessageID = messageID;
-                api.sendMessage(`[ 𝗔𝗦𝗦𝗜𝗦𝗧𝗔𝗡𝗧 𝗖𝗢𝗡𝗧𝗜𝗡𝗨𝗘𝗦 𝗔𝗜 ]\n━━━━━━━━━━━━━━━━━━\n${response}\n━━━━━━━━━━━━━━━━━━`, event.threadID, messageID);
+                api.sendMessage(`[ 🍟𝔾𝕖𝕞𝕚𝕟𝕚🍟 ]\n━━━━━━━━━━━━━━━━━━\n${response}\n━━━━━━━━━━━━━━━━━━`, event.threadID, messageID);
             } catch (error) {
                 console.error("Error in onChat:", error.message);
                 api.sendMessage("An error occurred while processing your request.", event.threadID);
