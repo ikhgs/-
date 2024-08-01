@@ -21,7 +21,7 @@ module.exports = {
       const searchMessage = await api.sendMessage(`🔍 ❤️Bruno❤️ répondra à votre question, mais veuillez patienter....`, event.threadID);
 
       const prompt = encodeURIComponent(args.join(" "));
-      const apiUrl = `https://hashier-api-snowflake.vercel.app/api/snowflake?ask=${prompt}`;
+      const apiUrl = `https://gemma-7b-it.vercel.app/?ask=${prompt}`;
 
       const response = await axios.get(apiUrl);
 
